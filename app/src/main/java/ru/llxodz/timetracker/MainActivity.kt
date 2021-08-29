@@ -1,5 +1,6 @@
 package ru.llxodz.timetracker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,5 +18,10 @@ class  MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        all_time_tv.setOnClickListener {
+            val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

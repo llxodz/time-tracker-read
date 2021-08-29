@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-thin"
             android:text="@string/total_progress"
-            app:layout_constraintBottom_toTopOf="@id/line1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/daily_task" />
@@ -106,7 +106,7 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#05000000"
+        android:background="@color/recyclerViewBackground"
         app:layout_constraintTop_toBottomOf="@id/body_container"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
