@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_row.view.*
 import ru.llxodz.timetracker.R
+import ru.llxodz.timetracker.model.Task
 
 class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+
+    private var taskList = emptyList<Task>()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -19,12 +22,19 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 30
+        return taskList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.tv_time_in_date.text = "00:25"
-        holder.itemView.tv_date_task.text = "19 сентября"
-        holder.itemView.tv_status_task.text = "Выполнено"
+        val currentTask = taskList[position]
+
+        holder.itemView.tv_time_in_date.text = currentTask.time.toString()
+        holder.itemView.tv_date_task.text = currentTask.date.toString()
+        holder.itemView.tv_status_task.text = currentTask.status
+    }
+
+    fun setData(task: List<Task>) {
+        this.taskList = task
+        notifyDataSetChanged()
     }
 }
