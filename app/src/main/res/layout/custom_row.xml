@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/row_layout"
+    android:padding="18dp"
+    android:background="@drawable/layout_bg"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_time_in_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:25"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_date_task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_date_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19 сентября"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_time_in_date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_status_task"/>
+
+    <TextView
+        android:id="@+id/tv_status_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выполнено"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#f9b484"
+        app:layout_constraintLeft_toRightOf="@+id/tv_date_task"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

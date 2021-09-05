@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TimeTracker</string>
+    <string name="string_daily_task">ЕЖЕДНЕВНОЕ ЧТЕНИЕ</string>
+    <string name="total_progress">Твой прогресс</string>
+    <string name="total_time">ВСЕ ВРЕМЯ</string>
 </resources>
