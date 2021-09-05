@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_row.view.*
 import ru.llxodz.timetracker.R
+import ru.llxodz.timetracker.helper.toHM
 import ru.llxodz.timetracker.model.Task
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
@@ -28,8 +31,8 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentTask = taskList[position]
 
-        holder.itemView.tv_time_in_date.text = currentTask.time.toString()
-        holder.itemView.tv_date_task.text = currentTask.date.toString()
+        holder.itemView.tv_time_in_date.text = currentTask.time.toHM
+        holder.itemView.tv_date_task.text = currentTask.date
         holder.itemView.tv_status_task.text = currentTask.status
     }
 

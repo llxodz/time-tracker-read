@@ -46,14 +46,18 @@ class TimerActivity : AppCompatActivity() {
         }
 
         button_back.setOnClickListener {
-            insertDataToDatabase()
-            finish()
+            if (timeInDatabase > 0){
+                insertDataToDatabase()
+                finish()
+            }else {
+                finish()
+            }
         }
     }
 
     private fun insertDataToDatabase() {
         val time = timeInDatabase
-        val date = 222
+        val date = convertLongToTime(System.currentTimeMillis())
         val status = if (time > timeCycle || time == timeCycle) {
             "Выполнено"
         } else {

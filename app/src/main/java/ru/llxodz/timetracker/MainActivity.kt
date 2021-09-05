@@ -3,15 +3,17 @@ package ru.llxodz.timetracker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.Observer
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.llxodz.timetracker.helper.toHMS
 import ru.llxodz.timetracker.list.ListAdapter
+import ru.llxodz.timetracker.model.Task
 import ru.llxodz.timetracker.viewmodel.TaskViewModel
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class  MainActivity : AppCompatActivity() {
 
@@ -30,14 +32,21 @@ class  MainActivity : AppCompatActivity() {
 
 //        // TaskView model
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
-        mTaskViewModel.readAllData.observe(this, { task ->
-            adapter.setData(task)
+        mTaskViewModel.readAllData.observe(this, { tasks ->
+            adapter.setData(tasks)
+            var sumTimes: Long = 0
+            tasks.forEach { i ->
+                sumTimes += i.time
+            }
+
+            all_time_tv.text = sumTimes.toHMS
         })
 
         all_time_tv.setOnClickListener {
             val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
         }
+
 
         total_time_tv.setOnClickListener {
             mTaskViewModel.deleteAllTasks()
