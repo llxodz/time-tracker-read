@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_row.view.*
 import ru.llxodz.timetracker.R
 import ru.llxodz.timetracker.model.Task
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
@@ -28,13 +30,19 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentTask = taskList[position]
 
-        holder.itemView.tv_time_in_date.text = currentTask.time.toString()
-        holder.itemView.tv_date_task.text = currentTask.date.toString()
+        holder.itemView.tv_time_in_date.text = convertLongToTime(currentTask.time)
+        holder.itemView.tv_date_task.text = currentTask.date
         holder.itemView.tv_status_task.text = currentTask.status
     }
 
     fun setData(task: List<Task>) {
         this.taskList = task
         notifyDataSetChanged()
+    }
+
+    private fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("mm:ss")
+        return format.format(date)
     }
 }
