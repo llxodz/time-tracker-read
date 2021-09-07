@@ -1,5 +1,8 @@
 package ru.llxodz.timetracker.helper
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 val Long.toHMS: String
     get() {
@@ -16,4 +19,11 @@ val Long.toHM: String
         val toSeconds = seconds % 60
         val toMinutes = (seconds / 60) % 60
         return String.format("%02d:%02d", toMinutes, toSeconds)
+    }
+
+val Long.toDMY: String
+    get() {
+        val date = Date(this)
+        val format = SimpleDateFormat("dd.MM.yy")
+        return format.format(date)
     }
