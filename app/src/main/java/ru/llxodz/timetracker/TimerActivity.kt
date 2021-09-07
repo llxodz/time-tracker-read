@@ -1,6 +1,5 @@
 package ru.llxodz.timetracker
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
@@ -8,10 +7,9 @@ import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_timer.*
+import ru.llxodz.timetracker.helper.toDMY
 import ru.llxodz.timetracker.model.Task
 import ru.llxodz.timetracker.viewmodel.TaskViewModel
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TimerActivity : AppCompatActivity() {
 
@@ -36,6 +34,7 @@ class TimerActivity : AppCompatActivity() {
                 cArg.format = "00:%s"
             }
             timeInDatabase = elapsedMillis
+            Log.d("TAG", "$timeInDatabase")
         }
 
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
@@ -46,10 +45,10 @@ class TimerActivity : AppCompatActivity() {
         }
 
         button_back.setOnClickListener {
-            if (timeInDatabase > 0){
+            if (timeInDatabase > 0) {
                 insertDataToDatabase()
                 finish()
-            }else {
+            } else {
                 finish()
             }
         }
@@ -57,7 +56,7 @@ class TimerActivity : AppCompatActivity() {
 
     private fun insertDataToDatabase() {
         val time = timeInDatabase
-        val date = convertLongToTime(System.currentTimeMillis())
+        val date = System.currentTimeMillis().toDMY
         val status = if (time > timeCycle || time == timeCycle) {
             "Выполнено"
         } else {
@@ -71,11 +70,5 @@ class TimerActivity : AppCompatActivity() {
             status
         )
         mTaskViewModel.addTask(task)
-    }
-
-    private fun convertLongToTime(time: Long): String {
-        val date = Date(time)
-        val format = SimpleDateFormat("dd.MM.yy")
-        return format.format(date)
     }
 }

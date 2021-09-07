@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +20,11 @@ import kotlin.collections.ArrayList
 class  MainActivity : AppCompatActivity() {
 
     private lateinit var mTaskViewModel: TaskViewModel
+
+    companion object {
+        const val NOTIFICATION_ID = 101
+        const val CHANNEL_ID = "channelID"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +52,17 @@ class  MainActivity : AppCompatActivity() {
         all_time_tv.setOnClickListener {
             val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
+
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("Читайте!")
+                .setContentText("Вы читаете")
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            with(NotificationManagerCompat.from(this)) {
+                notify(NOTIFICATION_ID, builder.build()) // посылаем уведомление
+            }
         }
 
 
