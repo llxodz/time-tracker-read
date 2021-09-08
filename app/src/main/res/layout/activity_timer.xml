@@ -56,7 +56,7 @@
             app:cpb_background_progressbar_color="@color/recyclerViewBackground"
             app:cpb_background_progressbar_width="15dp"
             app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="#f9b484"
+            app:cpb_progressbar_color="@color/orange"
             app:cpb_progressbar_width="10dp"
             app:cpb_round_border="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="СЕГОДНЯ"
-            android:textColor="#f9b484"
+            android:textColor="@color/orange"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/chronometer"
@@ -114,6 +114,20 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_stop_chronometer"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:visibility="gone"
+            android:text="STOP"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/button_back"
             android:layout_width="50dp"
@@ -123,6 +137,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/button_start_chronometer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_settings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/button_start_chronometer"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
