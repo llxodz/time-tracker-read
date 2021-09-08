@@ -1,13 +1,12 @@
-package ru.llxodz.timetracker
+package ru.llxodz.timetracker.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.llxodz.timetracker.R
 import ru.llxodz.timetracker.helper.toHMS
 import ru.llxodz.timetracker.list.ListAdapter
 import ru.llxodz.timetracker.viewmodel.TaskViewModel
@@ -27,7 +26,7 @@ class  MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-//        // TaskView model
+        // TaskView model
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
         mTaskViewModel.readAllData.observe(this, { tasks ->
             adapter.setData(tasks)

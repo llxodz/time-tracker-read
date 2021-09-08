@@ -1,16 +1,15 @@
-package ru.llxodz.timetracker
+package ru.llxodz.timetracker.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.transition.Visibility
 import android.util.Log
 import android.view.View.*
 import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet.GONE
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_timer.*
+import ru.llxodz.timetracker.R
 import ru.llxodz.timetracker.helper.toDMY
 import ru.llxodz.timetracker.model.Task
 import ru.llxodz.timetracker.viewmodel.TaskViewModel
@@ -19,7 +18,8 @@ class TimerActivity : AppCompatActivity() {
 
     private lateinit var mTaskViewModel: TaskViewModel
     private lateinit var chronometer: Chronometer
-    private var timeCycle: Long = 10000
+    private var writeToDatabase: Boolean = false
+    private var timeCycle: Long = 1500000
     private var timeInDatabase: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,12 +53,13 @@ class TimerActivity : AppCompatActivity() {
         button_stop_chronometer.setOnClickListener {
             chronometer.stop()
             insertDataToDatabase()
+            writeToDatabase = true
             button_stop_chronometer.visibility = INVISIBLE
             button_start_chronometer.visibility = VISIBLE
         }
 
         button_back.setOnClickListener {
-            if (timeInDatabase > 0) {
+            if (timeInDatabase > 0 && !writeToDatabase) {
                 insertDataToDatabase()
                 finish()
             } else {
@@ -75,7 +76,7 @@ class TimerActivity : AppCompatActivity() {
     private fun insertDataToDatabase() {
         val time = timeInDatabase
         val date = System.currentTimeMillis().toDMY
-        val status = if (time > timeCycle || time == timeCycle) {
+        val status = if (time >= timeCycle) {
             "Выполнено"
         } else {
             "Не выполнено"
