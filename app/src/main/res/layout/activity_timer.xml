@@ -64,13 +64,13 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Chronometer
-            android:id="@+id/chronometer"
+        <TextView
+            android:id="@+id/tv_chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/black"
-            android:format="00:00:00"
+            android:text="00:00:00"
             android:textSize="40dp"
             app:layout_constraintBottom_toBottomOf="@id/circular_progress_bar"
             app:layout_constraintLeft_toLeftOf="@id/circular_progress_bar"
@@ -85,7 +85,7 @@
             android:textColor="@color/orange"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/chronometer"
+            app:layout_constraintBottom_toTopOf="@id/tv_chronometer"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
