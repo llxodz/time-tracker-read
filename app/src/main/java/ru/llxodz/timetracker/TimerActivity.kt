@@ -1,10 +1,14 @@
 package ru.llxodz.timetracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.transition.Visibility
 import android.util.Log
+import android.view.View.*
 import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet.GONE
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_timer.*
 import ru.llxodz.timetracker.helper.toDMY
@@ -42,6 +46,15 @@ class TimerActivity : AppCompatActivity() {
         button_start_chronometer.setOnClickListener {
             chronometer.base = SystemClock.elapsedRealtime()
             chronometer.start()
+            button_start_chronometer.visibility = INVISIBLE
+            button_stop_chronometer.visibility = VISIBLE
+        }
+
+        button_stop_chronometer.setOnClickListener {
+            chronometer.stop()
+            insertDataToDatabase()
+            button_stop_chronometer.visibility = INVISIBLE
+            button_start_chronometer.visibility = VISIBLE
         }
 
         button_back.setOnClickListener {
@@ -51,6 +64,11 @@ class TimerActivity : AppCompatActivity() {
             } else {
                 finish()
             }
+        }
+
+        button_settings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="statusBarColor">#C6C6C6</color>
     <color name="recyclerViewBackground">#F0F8FB</color>
+    <color name="orange">#f9b484</color>
 </resources>
