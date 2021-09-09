@@ -106,7 +106,7 @@ class TimerService : LifecycleService() {
         NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_ID)
             .setAutoCancel(false)
             .setOngoing(true)
-            .setSmallIcon(R.drawable.ic_clock)
+            .setSmallIcon(R.drawable.ic_stopwatch)
             .setContentTitle("Таймер запущен")
             .setContentText("00:00:00")
             .setContentIntent(getTimerActivityPendingIntent())

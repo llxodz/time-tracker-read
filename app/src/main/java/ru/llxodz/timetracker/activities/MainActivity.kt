@@ -42,10 +42,5 @@ class  MainActivity : AppCompatActivity() {
             val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
         }
-
-
-        total_time_tv.setOnClickListener {
-            mTaskViewModel.deleteAllTasks()
-        }
     }
 }

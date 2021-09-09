@@ -24,9 +24,9 @@ class TimerActivity : AppCompatActivity() {
 
     private lateinit var mTaskViewModel: TaskViewModel
     private var writeToDatabase: Boolean = false
+    private var isTimerRunning: Boolean = false
     private var timeCycle: Long = 1500000
     private var timeInDatabase: Long = 0
-    private var isTimerRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +49,9 @@ class TimerActivity : AppCompatActivity() {
         }
 
         button_back.setOnClickListener {
-            toggleTimer()
             if (timeInDatabase > 0 && !writeToDatabase) {
                 insertDataToDatabase()
+                toggleTimer()
                 finish()
             } else {
                 finish()
@@ -59,7 +59,6 @@ class TimerActivity : AppCompatActivity() {
         }
 
         button_settings.setOnClickListener {
-            toggleTimer()
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
@@ -99,9 +98,9 @@ class TimerActivity : AppCompatActivity() {
         val time = timeInDatabase
         val date = System.currentTimeMillis().toDMY
         val status = if (time >= timeCycle) {
-            "Выполнено"
+            getString(R.string.txt_completed)
         } else {
-            "Не выполнено"
+            getString(R.string.txt_not_complited)
         }
 
         val task = Task(

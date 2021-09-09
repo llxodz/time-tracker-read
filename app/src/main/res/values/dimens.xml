@@ -2,4 +2,6 @@
 <resources>
     <dimen name="text_size_daily_task">24sp</dimen>
     <dimen name="text_size_all_time">56sp</dimen>
+    <dimen name="text_size_chronometer">40sp</dimen>
+    <dimen name="text_size_today">18sp</dimen>
 </resources>
