@@ -1,6 +1,22 @@
 <resources>
-    <string name="app_name">TimeTracker</string>
+    <string name="app_name">Трекер чтения</string>
     <string name="string_daily_task">ЕЖЕДНЕВНОЕ ЧТЕНИЕ</string>
     <string name="total_progress">Твой прогресс</string>
     <string name="total_time">ВСЕ ВРЕМЯ</string>
+    <string name="txt_completed">Выполнено</string>
+    <string name="txt_not_complited">Не выполнено</string>
+    <string name="_00_00_00">00:00:00</string>
+    <string name="text_today">СЕГОДНЯ</string>
+    <string name="text_stop">СТОП</string>
+    <string name="text_start">НАЧАТЬ</string>
+    <string name="text_delete_all_marks">Удалить все записи</string>
+    <string name="text_about">О приложении</string>
+    <string name="text_back_settings">Назад</string>
+    <string name="text_yes_alert">Да</string>
+    <string name="text_no_alert">Нет</string>
+    <string name="text_toast_delete_marks">Все записи успешно удалены</string>
+    <string name="text_title_alert">Удаление всех записей</string>
+    <string name="text_message_alert">Вы точно хотите удалить все записи?</string>
+    <string name="text_title_about_alert">О приложении</string>
+    <string name="text_message_about_alert">Founder - Ilya Gavrilov @llxodz\nVersion - 1.0.0</string>
 </resources>
